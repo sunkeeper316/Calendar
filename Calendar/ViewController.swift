@@ -1,20 +1,38 @@
-//
-//  ViewController.swift
-//  Calendar
-//
-//  Created by 黃德桑 on 2019/9/2.
-//  Copyright © 2019 黃德桑. All rights reserved.
-//
+
 
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    
+    @IBOutlet weak var showview: UIView!
+    
+//    var calendar : Calendarview!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let calendar  = Calendarview(frame: showview.bounds)
+        showview.addSubview(calendar)
+        
+        
+        
+        // Do any additional setup after loading the view$
     }
 
 
+}
+
+extension Calendarview {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if self.colorForLabel == .red {
+            self.colorForLabel = .gray
+        }else{
+            self.colorForLabel = .red
+        }
+        collectionView.reloadData()
+        
+    }
+    
 }
 
